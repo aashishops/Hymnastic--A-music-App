@@ -2,7 +2,7 @@
 git clone https://github.com/aashishops/Hymnastic--A-music-App.git
 ```
 ```bash
-cd Hymnastic--A-music-App.git
+cd Hymnastic--A-music-App
 ```
 ```bash
 mvn clean install
