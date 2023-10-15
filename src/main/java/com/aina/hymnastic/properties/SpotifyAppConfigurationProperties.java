@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import lombok.Data;
 
 @Data
-@ConfigurationProperties(prefix = "com.hardik.pottify")
+@ConfigurationProperties(prefix = "com.aina.hymnastic")
 public class SpotifyAppConfigurationProperties {
 
 	private App app = new App();
