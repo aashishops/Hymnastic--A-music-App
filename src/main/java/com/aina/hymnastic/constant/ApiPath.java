@@ -14,5 +14,7 @@ public class ApiPath {
 	public static final String SEARCH = "/search";
 	public static final String TOP_ARTISTS = "/topArtists";
 	public static final String TOP_TRACKS = "/topTracks";
+	public static final String SEARCH_ARTISTS = "/searchArtists";
+	public static final String Recommend_ARTISTS = "/RecommendArtists";
 
 }

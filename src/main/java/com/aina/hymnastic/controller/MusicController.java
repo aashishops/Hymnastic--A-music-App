@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.aina.hymnastic.constant.ApiPath;
@@ -100,5 +101,14 @@ public class MusicController {
 				featuredPlaylistService.getPlaylists((String) session.getAttribute("accessToken")));
 		return Template.FEATURED_PLAYLISTS;
 	}
+
+	
+
+	@GetMapping
+	public String showSearchPage() {
+		return Template.SEARCH_ARTISTS;
+	}
+
+	
 
 }

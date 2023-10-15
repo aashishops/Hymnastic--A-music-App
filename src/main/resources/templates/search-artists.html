@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Hymnastic - Search Artists</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="body-bg">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+        <div class="container">
+            <a class="navbar-brand h1-responsive display-4 heading-main text-white">Hymnastic</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNav"
+                aria-controls="collapseNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="collapseNav">
+                <form class="form-inline pb-0" action="search" method="post">
+                    <div class="md-form my-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search..." name="searchQuery">
+                    </div>
+                    <button class="btn btn-info btn-sm" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-username">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3 class="h2 container-username-heading mx-auto">Search Artists</h3>
+            </div>
+            <div class="col-12 text-center mt-2">
+                <a class="btn btn-success btn-rounded btn-sm mx-auto" type="button" href="/redirect">Go Back</a>
+            </div>
+        </div>
+        <hr class="hr bg-success">
+        <div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-12 my-2">
+                    <form action="RecommendArtists" method="post">
+                        <div class="md-form my-0">
+                            <input class="form-control" type="text" placeholder="Search Artists..." name="ArtistName">
+                        </div>
+                        <button class="btn btn-info btn-sm mt-2" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
+</html>

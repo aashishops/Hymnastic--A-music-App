@@ -18,4 +18,6 @@ public class Template {
 	public static final String NO_DATA = "no-data";
 	public static final String TOP_ARTISTS = "top-artists";
 	public static final String TOP_TRACKS = "top-tracks";
+	public static final String SEARCH_ARTISTS = "search-artists";
+	public static final String Recommend_ARTISTS = "recommend-artists";
 }
