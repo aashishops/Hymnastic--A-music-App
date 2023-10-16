@@ -1,47 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
     <title>Hymnastic</title>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,700">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Material Design Bootstrap -->
     <link rel="stylesheet" href="css/mdb.min.css">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Apply the "Oswald" font to specific elements */
+        body, h3, h4, h5, a, p, .text-white {
+            font-family: 'Oswald', sans-serif;
+        }
 
+        /* Adjust font for specific elements */
+        .container-username-heading, .btn {
+            font-family: 'Oswald', sans-serif !important;
+        }
+
+        /* Center and enlarge the logo */
+        .navbar-brand img {
+            max-height: 100px; /* Adjust the size as needed */
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 </head>
-
-<body class="body-bg">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    
+<body class="body-bg" style="background-color: #241E1E;">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" style="background-color: #D9D9D9; background-image: none;">
         <div class="container">
-            <a class="navbar-brand h1-responsive display-4 heading-main text-white">Hymnastic</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNav"
-   				 aria-controls="collapseNav" aria-expanded="false" aria-label="Toggle navigation">
-    		<span class="navbar-toggler-icon"></span>
-  			</button>
-  			 <div class="collapse navbar-collapse justify-content-end" id="collapseNav">
-            <form class="form-inline pb-0" action="search" method="post">
+            <a class="navbar-brand" href="/">
+                <img src="/img/hymnasticlogo.png" alt="Hymnastic Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNav" aria-controls="collapseNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Move the Search Form to the right -->
+            <form class="form-inline ml-auto" action="search" method="post">
                 <div class="md-form my-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search..." name="searchQuery">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search..." name="searchQuery" style="color: git#241E1E;">
                 </div>
+                
             </form>
+            <!-- Move the "Log Out" button to the top right -->
+            <a href="/logout" style="margin:right" type="button" class="btn btn-danger btn-rounded btn-sm">Log Out</a>
         </div>
     </nav>
 
     <div class="container container-username">
-        <div class="row">
-            <h3 class="h3 container-username-heading" th:text="'Hello '+${userName}">Hello Hardik</h3>
-        </div>
-        <div class="row mt-2 mb-3">
-            <a href="/logout" style="margin:auto" type="button" class="btn btn-danger btn-rounded btn-sm">Log Out</a>
-        </div>
         <div class="row">
             <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
 
@@ -51,7 +63,7 @@
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#albums" aria-expanded="false" aria-controls="collapseTwo1">
                             <h4 class="mb-0 text-white" style="font-family: anton">
                                 Get Your Top Artists
-                            </h4>
+                            </h4>   
                         </a>
                     </div>
 
@@ -61,7 +73,7 @@
                                 <div class="row">
                                     <a class="h5" href="/topArtists?term=2" style="color:#00e676; font-family: anton; text-shadow: 0.7px 0.7px black">All Time</a>
                                 </div>
-                                <div class="row">
+                                <div class "row">
                                     <a class="h5" href="/topArtists?term=1" style="color:#00e676; font-family: anton; text-shadow: 0.7px 0.7px black">From Past 6 Months</a>
                                 </div>
                                 <div class="row">
@@ -162,60 +174,51 @@
                 </a>
             </div>
         </div>
-        <div class="divider-new chili-pepper mt-2">
-      		<h4 class="text-center text-uppercase font-weight-bold mx-3 text-white"><a href="https://github.com/aashishops/Hymnastic" target="_blank"><i class="fab fa-github text-white"></i></a> Aashish,Arpith,Irsath,Nandakishor</h4>
-    	</div>
-        
     </div>
 
-	<div th:if="${display}">
-    <div class="fixed-bottom d-flex flex-column justify-content-center align-items-center">
-
-        <div class="card card-cascade wider reverse player" style="width: 100vw">
-
-            <div class="view view-cascade overlay p-3">
-                <div class="song">
-                    <p class="font-weight-bold mb-0 text-light" th:text="${#strings.abbreviate(currentPlaying.item.album.name,20)}">Kelis</p>
-                    <p class="font-small text-muted mb-0" th:text="${#strings.abbreviate(currentPlaying.item.name+' ('+currentPlaying.item.artists[0].name+')',20)}">Trick me (DJ Flam remix)</p>
-
-                    <div id="mobile-box">
-
-                        <audio id="music" preload="true">
-                            <source th:src="@{''+${currentPlaying.item.preview_url}+''}" src="https://bachataurban.com/download/1/Kelis%20-%20Trick%20Me%20(%20DJ%20Flam%20-%20Urban%20Bachata%20remix%20).mp3">
-                        </audio>
-
-                        <div id="audioplayer">
-                            <div id="timeline">
-                                <div id="playhead"></div>
+    <div th:if="${display}">
+        <div class="fixed-bottom d-flex flex-column justify-content-center align-items-center">
+            <div class="card card-cascade wider reverse player" style="width: 100vw">
+                <div class="view view-cascade overlay p-3">
+                    <div class="song">
+                        <p class="font-weight-bold mb-0 text-light" th:text="${#strings.abbreviate(currentPlaying.item.album.name,20)}">Kelis</p>
+                        <p class="font-small text-muted mb-0" th:text="${#strings.abbreviate(currentPlaying.item.name+' ('+currentPlaying.item.artists[0].name+')',20)}">Trick me (DJ Flam remix)</p>
+                        <div id="mobile-box">
+                            <audio id="music" preload="true">
+                                <source th:src="@{''+${currentPlaying.item.preview_url}+''}" src="https://bachataurban.com/download/1/Kelis%20-%20Trick%20Me%20(%20DJ%20Flam%20-%20Urban%20Bachata%20remix%20).mp3">
+                            </audio>
+                            <div id="audioplayer">
+                                <div id="timeline">
+                                    <div id="playhead"></div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-            </div>
-            <div class="card-body card-body-cascade pt-0 pb-3 z-depth-5">
-
-                <div class="row">
-                    <div class="col-4 d-flex justify-content-center px-0 mb-1">
-                        <img id="image" class="image z-depth-2" th:src="@{''+${currentPlaying.item.album.images[0].url}+''}" src="https://mdbootstrap.com//img/Photos/Others/blossom.jpg" alt="">
-                        <div class="dot"></div>
-                    </div>
-                    <div class="col-8 icons text-center px-0" style="position: absolute; left: 58%; transform: translate(-50%); ">
-                        <i class="fas fa-backward fa-2x p-md-4 p-3 my-2"></i>
-                        <i id="pButton" class="fas fa-play fa-2x p-md-4 p-3 my-2"></i>
-                        <i class="fas fa-forward fa-2x p-md-4 p-3 my-2"></i>
+                <div class="card-body card-body-cascade pt-0 pb-3 z-depth-5">
+                    <div class="row">
+                        <div class="col-4 d-flex justify-content-center px-0 mb-1">
+                            <img id="image" class="image z-depth-2" th:src="@{''+${currentPlaying.item.album.images[0].url}+''}" src="https://mdbootstrap.com//img/Photos/Others/blossom.jpg" alt="">
+                            <div class="dot"></div>
+                        </div>
+                        <div class="col-8 icons text-center px-0" style="position: absolute; left: 58%; transform: translate(-50%); ">
+                            <i class="fas fa-backward fa-2x p-md-4 p-3 my-2"></i>
+                            <i id="pButton" class="fas fa-play fa-2x p-md-4 p-3 my-2"></i>
+                            <i class="fas fa-forward fa-2x p-md-4 p-3 my-2"></i>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <footer style="background-color: #D9D9D9; padding: 20px; position: absolute; bottom: 0; width: 100%;">
+        <div class="container">
+            <p class="text-center" style="color: #241E1E; font-size: 30px; font-weight: bold;">Project Made by Aashish, Nanda, Irsath, Arpith</p>
+
 
         </div>
-
-    </div></div>
-
-
-
-
+    </footer>
+    
     <!-- jQuery -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -232,41 +235,32 @@
         var playhead = document.getElementById('playhead'); // playhead
         var timeline = document.getElementById('timeline'); // timeline
         var image = document.getElementById('image'); // timeline
-
         // timeline width adjusted for playhead
         var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
-
         // play button event listenter
         pButton.addEventListener("click", play);
-
         // timeupdate event listener
         music.addEventListener("timeupdate", timeUpdate, false);
-
         // makes timeline clickable
         timeline.addEventListener("click", function(event) {
             moveplayhead(event);
             music.currentTime = duration * clickPercent(event);
         }, false);
-
         // returns click as decimal (.77) of the total timelineWidth
         function clickPercent(event) {
             return (event.clientX - getPosition(timeline)) / timelineWidth;
         }
-
         // makes playhead draggable
         playhead.addEventListener('mousedown', mouseDown, false);
         window.addEventListener('mouseup', mouseUp, false);
-
         // Boolean value so that audio position is updated only when the playhead is released
         var onplayhead = false;
-
         // mouseDown EventListener
         function mouseDown() {
             onplayhead = true;
             window.addEventListener('mousemove', moveplayhead, true);
             music.removeEventListener('timeupdate', timeUpdate, false);
         }
-
         // mouseUp EventListener
         // getting input from all mouse clicks
         function mouseUp(event) {
@@ -283,7 +277,6 @@
         // Moves playhead as user drags
         function moveplayhead(event) {
             var newMargLeft = event.clientX - getPosition(timeline);
-
             if (newMargLeft >= 0 && newMargLeft <= timelineWidth) {
                 playhead.style.marginLeft = newMargLeft + "px";
             }
@@ -294,19 +287,16 @@
                 playhead.style.marginLeft = timelineWidth + "px";
             }
         }
-
         // timeUpdate
         // Synchronizes playhead position with current point in audio
         function timeUpdate() {
             var playPercent = timelineWidth * (music.currentTime / duration);
             playhead.style.marginLeft = playPercent + "px";
-            // timeline.style.backgroundColor = '#9c27b0';
             if (music.currentTime == duration) {
                 pButton.className = "";
                 pButton.className = "fas fa-play fa-2x p-md-4 p-3 my-2";
             }
         }
-
         //Play and Pause
         function play() {
             // start music
@@ -324,18 +314,15 @@
                 image.classList.remove('spin-animation');
             }
         }
-
         // Gets audio file duration
         music.addEventListener("canplaythrough", function() {
             duration = music.duration;
         }, false);
-
         // getPosition
         // Returns elements left position relative to top-left of viewport
         function getPosition(el) {
             return el.getBoundingClientRect().left;
         }
-
         //changing padding of navbar on scroll
         $(window).scroll(function() {
             let position = $(this).scrollTop();
@@ -345,9 +332,6 @@
                 $('.navbar').removeClass('custom-navigation-bar');
             }
         });
-
     </script>
-
 </body>
-
 </html>
