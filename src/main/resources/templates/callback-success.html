@@ -14,19 +14,19 @@
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Apply the "Oswald" font to specific elements */
-        body, h3, h4, h5, a, p, .text-white {
-            font-family: 'Oswald', sans-serif;
+         .navbar {
+            text-align: center;
+            padding: 30px 10; /* Increase the top and bottom padding to make the header larger */
+            height: 120px;
+        }
+        .navbar-brand {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        /* Adjust font for specific elements */
-        .container-username-heading, .btn {
-            font-family: 'Oswald', sans-serif !important;
-        }
-
-        /* Center and enlarge the logo */
         .navbar-brand img {
-            max-height: 100px; /* Adjust the size as needed */
+            max-height: 100px;
             display: block;
             margin: 0 auto;
         }
@@ -34,13 +34,12 @@
 </head>
 <body class="body-bg" style="background-color: #241E1E;">
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" style="background-color: #D9D9D9; background-image: none;">
-        <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="/img/hymnasticlogo.png" alt="Hymnastic Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNav" aria-controls="collapseNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <a class="navbar-brand" href="/">
+            <img src="/img/hymnasticlogo.png" alt="Hymnastic Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNav" aria-controls="collapseNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
             <!-- Move the Search Form to the right -->
             <form class="form-inline ml-auto" action="search" method="post">
                 <div class="md-form my-0">
@@ -213,7 +212,7 @@
     </div>
     <footer style="background-color: #D9D9D9; padding: 20px; position: absolute; bottom: 0; width: 100%;">
         <div class="container">
-            <p class="text-center" style="color: #241E1E; font-size: 30px; font-weight: bold;">Project Made by Aashish, Nanda, Irsath, Arpith</p>
+            <p class="text-center" style="color: #241E1E; font-size: 30px; font-weight: 400;">Project Made by Aashish, Nanda, Irsath, Arpith</p>
 
 
         </div>
