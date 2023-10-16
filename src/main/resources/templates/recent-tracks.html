@@ -1,37 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
     <title>Hymnastic</title>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,700">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Material Design Bootstrap -->
     <link rel="stylesheet" href="css/mdb.min.css">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+         .navbar {
+            text-align: center;
+            padding: 30px 10; /* Increase the top and bottom padding to make the header larger */
+            height: 120px;
+        }
+        .navbar-brand {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
+        .navbar-brand img {
+            max-height: 100px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 </head>
-
-<body class="body-bg">
-   <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    
-        <div class="container">
-            <a class="navbar-brand h1-responsive display-4 heading-main text-white">Hymnastic</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNav"
-   				 aria-controls="collapseNav" aria-expanded="false" aria-label="Toggle navigation">
-    		<span class="navbar-toggler-icon"></span>
-  			</button>
-  			 <div class="collapse navbar-collapse justify-content-end" id="collapseNav">
-            <form class="form-inline pb-0" action="search" method="post">
+<body class="body-bg" style="background-color: #241E1E;">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" style="background-color: #D9D9D9; background-image: none;">
+        <a class="navbar-brand" href="/">
+            <img src="/img/hymnasticlogo.png" alt="Hymnastic Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNav" aria-controls="collapseNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <!-- Move the Search Form to the right -->
+            <form class="form-inline ml-auto" action="search" method="post">
                 <div class="md-form my-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search..." name="searchQuery">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search..." name="searchQuery" style="color: git#241E1E;">
                 </div>
+                
             </form>
+            <!-- Move the "Log Out" button to the top right -->
+            <a href="/logout" style="margin:right" type="button" class="btn btn-danger btn-rounded btn-sm">Log Out</a>
         </div>
     </nav>
 
@@ -62,8 +79,14 @@
 
 
 
+    <footer style="background-color: #D9D9D9; padding: 20px; position: fixed; bottom: 0; width: 100%;">
+        <div class="container">
+            <p class="text-center" style="color: #241E1E; font-size: 12px; font-weight: 1000;">Project Made by Aashish, Nanda, Irsath, Arpith with ❤️‍🔥</p>
 
 
+        </div>
+    </footer>
+   
 
     <!-- jQuery -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
