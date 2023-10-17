@@ -19,6 +19,7 @@ import com.aina.hymnastic.service.RecentPlayesTrackService;
 import com.aina.hymnastic.service.SavedAlbumService;
 import com.aina.hymnastic.service.SavedTrackService;
 import com.aina.hymnastic.service.TopArtistService;
+import com.aina.hymnastic.service.TopGenreService;
 import com.aina.hymnastic.service.TopTrackService;
 import com.aina.hymnastic.utility.TermPeriodUtility;
 
@@ -29,6 +30,7 @@ import lombok.AllArgsConstructor;
 public class MusicController {
 
 	private final TopTrackService topTrackService;
+	private final TopGenreService topGenreService;
 	private final TopArtistService topArtistService;
 	private final SavedTrackService savedTrackService;
 	private final SavedAlbumService savedAlbumService;
@@ -61,7 +63,19 @@ public class MusicController {
 		}
 		return Template.TOP_ARTISTS;
 	}
-
+	@GetMapping(value = ApiPath.TOP_GENRES, produces = MediaType.TEXT_HTML_VALUE)
+	public String topGenresHandler(@RequestParam("term") final Integer term, final HttpSession session,
+								   final Model model) {
+		try {
+			model.addAttribute("genres",
+					topGenreService.getTopGenres((String) session.getAttribute("accessToken"), term));
+			model.addAttribute("term", TermPeriodUtility.getTerm(term));
+		} catch (NoAccountDataException exception) {
+			return Template.NO_DATA;
+		}
+		return Template.TOP_GENRES;
+	}
+	
 	@GetMapping(value = ApiPath.SAVED_TRACKS, produces = MediaType.TEXT_HTML_VALUE)
 	public String savedTracksHandler(final HttpSession session, final Model model) {
 		try {

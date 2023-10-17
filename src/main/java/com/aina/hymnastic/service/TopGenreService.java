@@ -1,0 +1,50 @@
+package com.aina.hymnastic.service;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.aina.hymnastic.exception.NoAccountDataException;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class TopGenreService {
+
+    private final RestTemplate restTemplate;
+    private static final String URL = "https://api.spotify.com/v1/me/top/artists?time_range=";
+
+    public Object getTopGenres(String token, int term) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + token);
+
+        String terms[] = { "short_term", "medium_term", "long_term" };
+
+        HttpEntity<String> entity = new HttpEntity<>("paramters", headers);
+
+        ResponseEntity<Object> response = restTemplate.exchange(URL + terms[term], HttpMethod.GET, entity, Object.class);
+        LinkedHashMap result = (LinkedHashMap) response.getBody();
+
+        ArrayList items = (ArrayList) result.get("items");
+
+        if (items.size() == 0) {
+            throw new NoAccountDataException();
+        }
+
+        // Extract genres from the artist data, assuming that each artist has a 'genres' field.
+        ArrayList<String> topGenres = new ArrayList<>();
+        for (Object artist : items) {
+            ArrayList<String> genres = (ArrayList<String>) ((LinkedHashMap) artist).get("genres");
+            topGenres.addAll(genres);
+        }
+
+        return topGenres;
+    }
+}
