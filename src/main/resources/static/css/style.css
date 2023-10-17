@@ -1,21 +1,21 @@
 @font-face {
     font-family: navHeading;
-    src: url(../font/Lobster-Regular.ttf);
+    src: url(../font/Oswald-VariableFont_wght.ttf);
 }
 
 @font-face {
     font-family: heading;
-    src: url(../font/OleoScript-Bold.ttf);
+    src: url(../font/Oswald-VariableFont_wght.ttf);
 }
 
 @font-face {
     font-family: paraHeading;
-    src: url(../font/BreeSerif-Regular.ttf);
+    src: url(../font/Oswald-VariableFont_wght.ttf);
 }
 
 @font-face{
     font-family: anton;
-    src: url(../font/Anton-Regular.ttf);
+    src: url(../font/Oswald-VariableFont_wght.ttf);
 }
 
 body {
