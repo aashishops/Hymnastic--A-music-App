@@ -4,6 +4,9 @@ public class Template {
 
 	public static final String CALLBACK_SUCCESS = "callback-success";
 	public static final String CALLBACK_FAILURE = "callback-failure";
+	public static final String STATS = "stats";
+	public static final String RECOMMEND = "recommend";
+	public static final String PLAYLIST = "playlist";
 	public static final String FEATURED_PLAYLISTS = "featured-playlists";
 	public static final String INDEX = "index";
 	public static final String ERROR = "error";
@@ -18,7 +21,7 @@ public class Template {
 	public static final String NO_DATA = "no-data";
 	public static final String TOP_ARTISTS = "top-artists";
 	public static final String TOP_TRACKS = "top-tracks";
-	public static final String TOP_GENRES = "top-genres";
+	
 	public static final String SEARCH_ARTISTS = "search-artists";
 	public static final String Recommend_ARTISTS = "recommend-artists";
 	public static final String SEARCH_TRACKS = "search-tracks";
