@@ -1,0 +1,21 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class JdbcExample {
+    public static void main(String[] args) {
+
+        String databaseName = "Hymnastic";
+        String user = "root";
+        String password = "root";
+
+        try {
+            Connection connection = DriverManager.getConnection(url, user, password);
+            System.out.println("Connected to the database!");
+            connection.close();
+        } 
+        catch (SQLException e) {
+            System.err.println("Connection failed! Error: " + e.getMessage());
+        }
+    }
+}

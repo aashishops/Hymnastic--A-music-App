@@ -19,8 +19,11 @@
 }
 
 body {
-    height: 100vh;
-    background: linear-gradient(rgba(0, 200, 81, 0.1), rgba(0, 200, 81, 0.2)) fixed, url('https://images.pexels.com/photos/375751/pexels-photo-375751.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') no-repeat fixed center/cover;
+    background-color: #241d1d;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;  
 }
 
 .body-bg {
@@ -234,3 +237,60 @@ body {
     height: 23px;
 	}
 }
+
+.RECOMEND {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    min-width: 360px;
+    min-height: 880px;
+  }
+  
+  .RECOMEND .pexels-photo-by-gl {
+    position: relative;
+    width: 340px;
+    height: 860px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px dashed;
+    border-color: #9747ff;
+  }
+  
+  .RECOMEND .property-default {
+    width: 300px;
+    height: 400px;
+    top: 20px;
+    left: 20px;
+    position: absolute;
+    background-image: url(./img/pexels-photo-by-g-l-i-k.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .RECOMEND .property {
+    width: 320px;
+    height: 415px;
+    top: 445px;
+    left: 10px;
+    position: absolute;
+    background-image: url(./img/image.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .RECOMEND .text-wrapper {
+    position: absolute;
+    width: 203px;
+    top: 194px;
+    left: 59px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  

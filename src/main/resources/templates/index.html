@@ -32,6 +32,7 @@
         }
     </style>
 </head>
+
 <body class="body-bg" style="background-color: #241E1E;">
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" style="background-color: #D9D9D9; background-image: none;">
         <a class="navbar-brand" href="/redirect">
@@ -39,9 +40,26 @@
         </a>
         
     </nav>
-    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <body class="body-bg" style="background-color: #241E1E;">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" style="background-color: #D9D9D9; background-image: none;">
+            <a class="navbar-brand" href="/redirect">
+                <img src="/img/hymnasticlogo.png" alt="Hymnastic Logo">
+            </a>
+        </nav>
+        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <!-- Add a form to collect username and password -->
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <input type="text" name="username" class="form-control" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                </div>
         <a type="button" th:href="@{${url}}" class="btn btn-success btn-custom btn-lg btn-rounded waves-effect">Log in</a>
-    </div>
+                
+            </form>
+        </div>
+   
     
 
 
