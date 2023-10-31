@@ -47,18 +47,33 @@
             </a>
         </nav>
         <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-            <!-- Add a form to collect username and password -->
-            <form th:action="@{/login}" method="post">
+            <form action="/login" method="post" onsubmit="return validateForm()">
                 <div class="form-group">
-                    <input type="text" name="username" class="form-control" placeholder="Username" required>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Username" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
                 </div>
-        <a type="button" th:href="@{${url}}" class="btn btn-success btn-custom btn-lg btn-rounded waves-effect">Log in</a>
-                
+                <button type="submit" class="btn btn-success btn-custom btn-lg btn-rounded waves-effect">Log in</button>
             </form>
         </div>
+    
+        <script>
+            function validateForm() {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+    
+                if (username === "hymastic-admin" && password === "hymastic") {
+                    // Authentication successful, redirect to the specified URL
+                    window.location.href = "https://accounts.spotify.com/en/authorize?client_id=9d32e1bba00643418e18806a806c577d&response_type=code&redirect_uri=http://localhost:6969/callback&code_challenge_method=S256&code_challenge=WAHROyX8ZCvn4Kx6T5mUey8NEV2WdJjZj3nnprmCGIs&scope=ugc-image-upload,user-read-playback-state,user-modify-playback-state,user-read-currently-playing,streaming,app-remote-control,user-read-email,user-read-private,playlist-read-collaborative,playlist-modify-public,playlist-read-private,playlist-modify-private,user-library-modify,user-library-read,user-top-read,user-read-playback-position,user-read-recently-played,user-follow-read,user-follow-modify";
+                    return false; // Form submission will be blocked
+                } else {
+                    // Authentication failed
+                    alert("Invalid username or password. Please try again.");
+                    return false; // Form submission will be blocked
+                }
+            }
+        </script>
    
     
 
