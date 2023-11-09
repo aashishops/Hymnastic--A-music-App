@@ -54,26 +54,47 @@
                 <div class="form-group">
                     <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
                 </div>
-                <button type="submit" class="btn btn-success btn-custom btn-lg btn-rounded waves-effect">Log in</button>
+                <a id="loginButton" type="button" class="btn btn-success btn-custom btn-lg btn-rounded waves-effect">Log in</a>
+                <input type="hidden" id="dynamicURL" th:value="${url}" />
+
             </form>
         </div>
-    
         <script>
-            function validateForm() {
+            document.getElementById("loginButton").addEventListener("click", function(event) {
+                event.preventDefault(); 
                 var username = document.getElementById("username").value;
                 var password = document.getElementById("password").value;
-    
+                var isValidCredentials = false;
+        
                 if (username === "hymastic-admin" && password === "hymastic") {
-                    // Authentication successful, redirect to the specified URL
-                    window.location.href = "https://accounts.spotify.com/en/authorize?client_id=9d32e1bba00643418e18806a806c577d&response_type=code&redirect_uri=http://localhost:6969/callback&code_challenge_method=S256&code_challenge=WAHROyX8ZCvn4Kx6T5mUey8NEV2WdJjZj3nnprmCGIs&scope=ugc-image-upload,user-read-playback-state,user-modify-playback-state,user-read-currently-playing,streaming,app-remote-control,user-read-email,user-read-private,playlist-read-collaborative,playlist-modify-public,playlist-read-private,playlist-modify-private,user-library-modify,user-library-read,user-top-read,user-read-playback-position,user-read-recently-played,user-follow-read,user-follow-modify";
-                    return false; // Form submission will be blocked
-                } else {
-                    // Authentication failed
-                    alert("Invalid username or password. Please try again.");
-                    return false; // Form submission will be blocked
+                    isValidCredentials = true;
+                } else if (username === "irsath" && password === "hymastic") {
+                    isValidCredentials = true;
                 }
-            }
+                else if (username === "arpith" && password === "hymastic") {
+                    isValidCredentials = true;
+                }
+                
+                else if (username === "aashish" && password === "hymastic") {
+                    isValidCredentials = true;
+                }
+
+                else if (username === "nanda" && password === "hymastic") {
+                    isValidCredentials = true;
+                }
+                        
+                if (isValidCredentials) {
+                    
+                    var dynamicURL = document.getElementById("dynamicURL").value;
+                    window.location.href = dynamicURL;
+                } else {
+                    
+                    alert("Invalid username or password. Please try again.");
+                }
+            });
         </script>
+        
+        
    
     
 
