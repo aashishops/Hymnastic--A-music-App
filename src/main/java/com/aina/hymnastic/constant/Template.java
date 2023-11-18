@@ -26,4 +26,8 @@ public class Template {
 	public static final String Recommend_ARTISTS = "recommend-artists";
 	public static final String SEARCH_TRACKS = "search-tracks";
 	public static final String Recommend_TRACKS = "recommend-tracks";
+	public static final String SEARCH_LYRICS = "search-lyrics";
+	public static final String Recommend_LYRICS = "recommend-lyrics";
+	public static final String SEARCH_TRACKS_PLAYLIST = "search-tracks-playlist";
+	public static final String VIEWPLAYLIST = "view-playlist";
 }

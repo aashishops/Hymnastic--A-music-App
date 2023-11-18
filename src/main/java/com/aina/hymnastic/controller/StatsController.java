@@ -103,11 +103,6 @@ public class StatsController {
 
 	
 
-	@GetMapping
-	public String showSearchPage() {
-		return Template.SEARCH_ARTISTS;
-	}
-	
 	
     
 

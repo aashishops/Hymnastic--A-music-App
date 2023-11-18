@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie-edge">
-    <title>Hymnastic</title>
+    <title>Hymnastic - Search Artists</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,700">
     <!-- Bootstrap core CSS -->
@@ -14,9 +14,9 @@
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="css/style.css">
     <style>
-         .navbar {
+        .navbar {
             text-align: center;
-            padding: 30px 10; /* Increase the top and bottom padding to make the header larger */
+            padding: 30px 10;
             height: 120px;
         }
         .navbar-brand {
@@ -24,7 +24,6 @@
             left: 50%;
             transform: translateX(-50%);
         }
-
         .navbar-brand img {
             max-height: 100px;
             display: block;
@@ -33,6 +32,8 @@
     </style>
 </head>
 <body class="body-bg" style="background-color: #241E1E;">
+
+    <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" style="background-color: #D9D9D9; background-image: none;">
         <a class="navbar-brand" href="/redirect">
             <img src="/img/hymnasticlogo.png" alt="Hymnastic Logo">
@@ -51,38 +52,83 @@
             <a href="/logout" style="margin:right" type="button" class="btn btn-danger btn-rounded btn-sm">Log Out</a>
         </div>
     </nav>
-
+   
     <div class="container container-username">
         <div class="row">
             <div class="col-12 text-center">
-                <h3 class="h2 container-username-heading mx-auto"><br>Search Artists</h3>
-            </div>
-            <div class="col-12 text-center mt-2">
-                <a class="btn btn-success btn-rounded btn-sm mx-auto" type="button" href="/redirect">Go Back</a>
+                <h3 class="h2 container-username-heading mx-auto" style="color: #D9D9D9;"> <br>Search Artists</h3>
+        
+                <form class="form-inline" action="" method="get" style="margin-top: 10px;">
+                    <div class="md-form my-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search artist" name="keyword" style="color: #D9D9D9;" th:value="${keyword}">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </form>
+        
             </div>
         </div>
+        
         <hr class="bg-D9D9D9" style="height: 2px; background-color: #D9D9D9;">
 
-        <div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-12 my-2">
-                    <form action="RecommendArtists" method="post">
-                        <div class="md-form my-0">
-                            <input class="form-control" type="text" placeholder="Search Artists..." name="ArtistName">
-                        </div>
-                        <button class="btn btn-info btn-sm mt-2" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <!-- Define the number of columns you want -->
+                            <th scope="col" style="color: #D9D9D9;">Artists</th>
+                            <th scope="col" style="color: #D9D9D9;">Artists</th>
+                            <th scope="col" style="color: #D9D9D9;">Artists</th>
+                            <!-- Add more columns as needed -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Calculate the number of rows based on the number of artists and columns -->
+                        <tr th:each="row : ${#numbers.sequence(0, (artists.size() div 3) + ((artists.size() mod 3) gt 0 ? 1 : 0) - 1)}">
+                            <!-- Display artists in each column -->
+                            <td>
+                                <!-- Check if the current index is within the bounds of the artists list -->
+                                <span th:if="${row * 3 lt artists.size()}">
+                                    <!-- Link to the /RecommendArtists page with the specific artist information -->
+                                    <a th:href="@{'/RecommendArtists?artist=' + ${artists[row * 3].artist}}" style="color: #D9D9D9;">
+                                        <span th:text="${artists[row * 3].artist}"></span>
+                                    </a>
+                                </span>
+                            </td>
+                            <td>
+                                <span th:if="${row * 3 + 1 lt artists.size()}">
+                                    <a th:href="@{'/RecommendArtists?artist=' + ${artists[row * 3 + 1].artist}}" style="color: #D9D9D9;">
+                                        <span th:text="${artists[row * 3 + 1].artist}"></span>
+                                    </a>
+                                </span>
+                            </td>
+                            <td>
+                                <span th:if="${row * 3 + 2 lt artists.size()}">
+                                    <a th:href="@{'/RecommendArtists?artist=' + ${artists[row * 3 + 2].artist}}" style="color: #D9D9D9;">
+                                        <span th:text="${artists[row * 3 + 2].artist}"></span>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
         </div>
+        <form class="form-inline ml-auto" th:action="@{${ApiPath.SEARCH_ARTISTS}}" method="get">
+            <div class="md-form my-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search artist" name="keyword" style="color: #241E1E;" th:value="${keyword}">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
     </div>
+
+    <!-- Footer -->
     <footer style="background-color: #D9D9D9; padding: 20px; position: fixed; bottom: 0; width: 100%;">
         <div class="container">
             <p class="text-center" style="color: #241E1E; font-size: 12px; font-weight: 1000;">Project Made by Aashish, Nanda, Irsath, Arpith with ❤️‍🔥</p>
-
-
         </div>
     </footer>
+
     <!-- jQuery -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -91,6 +137,9 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Your custom scripts (optional) -->
+    <script type="text/javascript">
+        // Custom scripts go here
+    </script>
 </body>
-
 </html>

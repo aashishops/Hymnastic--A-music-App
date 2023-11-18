@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
+    <title>Hymnastic - Search Tracks</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,700">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .navbar {
+            text-align: center;
+            padding: 30px 10;
+            height: 120px;
+        }
+        .navbar-brand {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .navbar-brand img {
+            max-height: 100px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="body-bg" style="background-color: #241E1E;">
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" style="background-color: #D9D9D9; background-image: none;">
+        <a class="navbar-brand" href="/redirect">
+            <img src="/img/hymnasticlogo.png" alt="Hymnastic Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNav" aria-controls="collapseNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Move the Search Form to the right -->
+        <form class="form-inline ml-auto" action="search" method="post">
+            <div class="md-form my-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search..." name="searchQuery" style="color: git#241E1E;">
+            </div>
+        </form>
+        <!-- Move the "Log Out" button to the top right -->
+        <a href="/logout" style="margin:right" type="button" class="btn btn-danger btn-rounded btn-sm">Log Out</a>
+    </nav>
+   
+    <div class="container container-username">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3 class="h2 container-username-heading mx-auto" style="color: #D9D9D9;"> <br>Search Tracks</h3>
+        
+                <form class="form-inline" action="" method="get" style="margin-top: 10px;">
+                    <div class="md-form my-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search song" name="keyword" style="color: #D9D9D9;" th:value="${keyword}">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </form>
+        
+            </div>
+        </div>
+        
+        <hr class="bg-D9D9D9" style="height: 2px; background-color: #D9D9D9;">
+
+        <div class="row">
+            <div class="col-12">
+                <!-- Display a simple table -->
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="color: #D9D9D9;">Track Title</th>
+                            <th scope="col" style="color: #D9D9D9;">Artists</th>
+                            <th scope="col" style="color: #D9D9D9;">Album Name</th>
+                            <!-- Add more columns as needed -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="song : ${songs}">
+                            <td>
+                                <a th:href="@{'/recommendTracks?track=' + ${#strings.replace(song.trackName, ' ', '%20')} + '&amp;artist=' + ${#strings.replace(song.artist, ' ', '%20')}}" style="color: #D9D9D9;">
+                                    <span th:text="${song.trackName}"></span>
+                                </a>
+                            </td>
+                            <td th:text="${song.artist}" style="color: #D9D9D9;"></td>
+                            <td th:text="${song.albumName}" style="color: #D9D9D9;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <form class="form-inline ml-auto" th:action="@{${ApiPath.SEARCH_TRACKS}}" method="get">
+            <div class="md-form my-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search..." name="keyword" style="color: #241E1E;" th:value="${keyword}">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
+        
+        
+        
+        </div>
+        
+    </div>
+
+    <!-- Footer -->
+    <footer style="background-color: #D9D9D9; padding: 20px; position: fixed; bottom: 0; width: 100%;">
+        <div class="container">
+            <p class="text-center" style="color: #241E1E; font-size: 12px; font-weight: 1000;">Project Made by Aashish, Nanda, Irsath, Arpith with ❤️‍🔥</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Your custom scripts (optional) -->
+    <script type="text/javascript">
+        // Custom scripts go here
+    </script>
+</body>
+</html>

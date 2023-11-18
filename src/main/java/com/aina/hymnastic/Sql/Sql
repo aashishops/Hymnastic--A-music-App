@@ -1,0 +1,32 @@
+CREATE TABLE songs (
+  sno INT,
+  track_id VARCHAR(255),
+  artists VARCHAR(10000),
+  album_name VARCHAR(255),
+  track_name VARCHAR(1000),
+  popularity FLOAT,
+  duration_ms INT,
+  explicit BOOLEAN,
+  danceability FLOAT,
+  energy FLOAT,
+  `key` INT,
+  loudness FLOAT,
+  `mode` INT,
+  speechiness FLOAT,
+  acousticness FLOAT,
+  instrumentalness FLOAT,
+  liveness FLOAT,
+  valence FLOAT,
+  tempo FLOAT,
+  time_signature INT,
+  track_genre VARCHAR(255)
+);
+
+LOAD DATA INFILE 'E:\\2nd year\\3rd sem\\Aoop\\RealProject\\Hymnastic--A-music-App\\src\\main\\Data\\Songs.csv'
+INTO TABLE songs
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n'
+IGNORE 1 LINES; -- If your CSV file has a header row that you want to skip
+
+
+
+

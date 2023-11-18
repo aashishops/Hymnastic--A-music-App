@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie-edge">
-    <title>Hymnastic</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Hymnastic - Song Recommendations</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,700">
     <!-- Bootstrap core CSS -->
@@ -14,9 +14,9 @@
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="css/style.css">
     <style>
-         .navbar {
+        .navbar {
             text-align: center;
-            padding: 30px 10; /* Increase the top and bottom padding to make the header larger */
+            padding: 30px 10;
             height: 120px;
         }
         .navbar-brand {
@@ -24,15 +24,22 @@
             left: 50%;
             transform: translateX(-50%);
         }
-
         .navbar-brand img {
             max-height: 100px;
             display: block;
             margin: 0 auto;
         }
+        .recommendation-text {
+            color: #D9D9D9;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body class="body-bg" style="background-color: #241E1E;">
+
+    <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" style="background-color: #D9D9D9; background-image: none;">
         <a class="navbar-brand" href="/redirect">
             <img src="/img/hymnasticlogo.png" alt="Hymnastic Logo">
@@ -40,48 +47,60 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNav" aria-controls="collapseNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse" id="collapseNav">
             <!-- Move the Search Form to the right -->
             <form class="form-inline ml-auto" action="search" method="post">
                 <div class="md-form my-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search..." name="searchQuery" style="color: git#241E1E;">
                 </div>
-                
             </form>
             <!-- Move the "Log Out" button to the top right -->
-            <a href="/logout" style="margin:right" type="button" class="btn btn-danger btn-rounded btn-sm">Log Out</a>
+             <a href="/logout" style="margin-right: 10px;" type="button" class="btn btn-danger btn-rounded btn-sm">Log Out</a>
+
         </div>
     </nav>
 
-    <div class="container container-username">
+    <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h3 class="h3 container-username-heading mx-auto"><br>Recommended Artists for <span th:text="ArtistName"></span></h3>
-            </div>
-            <div class="col-12 text-center mt-2">
-                <a class="btn btn-success btn-rounded btn-sm mx-auto" type="button" href="/searchArtists">Go Back</a>
+                <!-- Display the track and artist names from URL parameters -->
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <h1 class="h1" style="color: #D9D9D9;">Recommendations for <span th:text="${#request.getParameter('track')}"></span>
+                    <span th:text="${#request.getParameter('artist')}"></span></h1>
             </div>
         </div>
+
+        <!-- Display the recommendations -->
+        <!-- Display the recommendations -->
+        <div class="row">
+            <div class="col-12">
+                <ul>
+                    <li th:each="recommendation : ${recommendations}">
+                        <p th:utext="${'&lt;br&gt;' + recommendation.replace('1', '<br><br>')}" style="color: #D9D9D9; font-size: 25px; font-weight: bold;"></p>
+                    </li>
+                </ul>
+                
+                
+                
+            </div>
+        </div>
+
         
-        <div class="container">
-            <div class="row">
-                <!-- Use Thymeleaf iteration to display up to 5 recommended artists -->
-                <div th:each="artist, artistStat : ${relatedArtists.artists}" class="col-md-4 col-6 my-2" th:if="${artistStat.index} < 5">
-                    <div class="card" style="width:10.5rem" th:attr="onclick=|openSpotifyLink('${artist.external_urls.spotify}')|">
-                        <img class="card-img-top" src="https://i.scdn.co/image/4a9334106651fcd93652f073092c67a7922acafb" th:src="@{''+${artist.images[0].url}+''}" alt="Card image cap">
-                        <div class="card-body text-center">
-                            <p class="card-title text-dark font-weight-bold" th:text="${artist.name}"><br>Recommended Artist</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+
+    <!-- Footer -->
     <footer style="background-color: #D9D9D9; padding: 20px; position: fixed; bottom: 0; width: 100%;">
         <div class="container">
             <p class="text-center" style="color: #241E1E; font-size: 12px; font-weight: 1000;">Project Made by Aashish, Nanda, Irsath, Arpith with ❤️‍🔥</p>
-    
-    
         </div>
     </footer>
+
     <!-- jQuery -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -92,20 +111,8 @@
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Your custom scripts (optional) -->
     <script type="text/javascript">
-        // changing padding of navbar on scroll
-        $(window).scroll(function() {
-            let position = $(this).scrollTop();
-            if (position >= 100) {
-                $('.navbar').addClass('custom-navigation-bar');
-            } else {
-                $('.navbar').removeClass('custom-navigation-bar');
-            }
-        });
-
-        function openSpotifyLink(link) {
-            window.open(link);
-        }
+        // Custom scripts go here
     </script>
 </body>
-
 </html>
+

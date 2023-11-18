@@ -27,5 +27,9 @@ public class MainController {
 	public String showPlaylistPage() {
 		return Template.PLAYLIST;
 	}
+	@GetMapping("/searchLyrics")
+	public String SearchLyrics() {
+		return Template.SEARCH_LYRICS;
+	}
 
 }

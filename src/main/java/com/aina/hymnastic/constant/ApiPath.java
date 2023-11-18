@@ -19,7 +19,12 @@ public class ApiPath {
 	public static final String TOP_TRACKS = "/topTracks";
 	public static final String SEARCH_ARTISTS = "/searchArtists";
 	public static final String Recommend_ARTISTS = "/RecommendArtists";
-	public static final String SEARCH_TRACKS = "search-tracks";
-	public static final String Recommend_TRACKS = "recommend-tracks";
+	public static final String SEARCH_TRACKS = "/searchTracks";
+	public static final String Recommend_TRACKS = "/recommendTracks";
+	public static final String SEARCH_LYRICS = "/searchLyrics";
+	public static final String Recommend_LYRICS = "/recommendLyrics";
+	public static final String SEARCH_TRACKS_PLAYLIST = "/searchTracksPlaylist";
+	public static final String VIEW_PLAYLIST = "/viewPlaylist";
+	
 
 }
